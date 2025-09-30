@@ -1,6 +1,6 @@
 # PARCIAL_2_SD
 ## Nombres:
-Julian CAmilo Ceron 
+Julian Camilo Ceron 
 
 Marìa Jose Espinosa 
 
@@ -30,3 +30,7 @@ Marìa Jose Espinosa
 ![Docker Compose sin declarar redes](https://github.com/julianceron64/Parcial_2_SD/blob/main/Capturas/punto%204%20eviencia%20neo4j%20no%20accesible.png?raw=true)
 ![Docker Compose sin declarar redes](https://github.com/julianceron64/Parcial_2_SD/blob/main/Capturas/punto%204%20evidencia%20ngnix.png?raw=true)
 
+
+## Reflexion
+
+El aeropuerto representa escalabilidad en el sentido en el que en cualquier momento se puede añadir mas filtros o puertas de embarque (filtros, servicios, middlewares) sin que las puertas de embarque ya existentes colapsen, tolerancia a fallo en el sentido en el que al tener varias replicas y varios servicios, sin importar si uno falla, los demas siguen en pie y transparencia en el sentido en el que todos los filtros y puertas de embarque(servicios, middlewares) son muy claros y protegen que no entren pasajeros que no corresponden  (usuarios no deseados)
