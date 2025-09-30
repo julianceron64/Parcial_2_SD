@@ -80,22 +80,28 @@ services:
     restart: unless-stopped
     environment:
       - NEO4J_AUTH=neo4j/password
-    ports: 
-      - "7474:7474"
-      - "7687:7687"
     volumes:
       - neo4j_data:/data
       - neo4j_logs:/logs
     networks:
       - app_net
+   
+   
+  pressroom:
+    image: nginx:alpine
+    container_name: pressroom
+    restart: unless-stopped
+    volumes:
+      - ./pressroom/index.html:/usr/share/nginx/html/index.html:ro
+    networks:	
+      - app_net
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=app_net"
-      - "traefik.http.routers.neo4j.rule=Host(`ninetales.localhost`)"
-      - "traefik.http.routers.neo4j.entrypoints=web"
-      - "traefik.http.services.neo4j.loadbalancer.server.port=7474"
-      - "traefik.http.routers.neo4j.middlewares=ops-auth"
-      - "traefik.http.middlewares.ops-auth.basicauth.users=admin:{SHA}0DPiKuNIrrVmD8IUCuw1hQxNqZc="
+      - "traefik.http.routers.pressroom.rule=Host(`milotic.localhost`)"
+      - "traefik.http.routers.pressroom.entrypoints=web"
+      - "traefik.http.services.pressroom.loadbalancer.server.port=80"
+
 
 networks:
   app_net:
